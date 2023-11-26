@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParksAPI.Models;
+using ParksAPI.Interfaces;
+using Newtonsoft.Json;
 
 namespace ParksAPI.Controllers
 {
@@ -9,10 +11,12 @@ namespace ParksAPI.Controllers
   public class ParksController : ControllerBase
   {
     private readonly ParksAPIContext _db;
+    private readonly IParkRepository _repository;
 
-    public ParksController(ParksAPIContext db)
+    public ParksController(ParksAPIContext db, IParkRepository repository)
     {
       _db = db;
+      _repository = repository;
     }
 
     [HttpGet]
@@ -38,6 +42,40 @@ namespace ParksAPI.Controllers
       }
 
       return park;
+    }
+
+    [HttpGet]
+    [Route("paging-filter")]
+    public IActionResult GetParkPagingData([FromQuery] PagedParameters parkParameters)
+    {
+        var park = _repository.GetParks(parkParameters);
+
+        var metadata = new
+        {
+            park.TotalCount,
+            park.PageSize,
+            park.CurrentPage,
+            park.TotalPages,
+            park.HasNext,
+            park.HasPrevious
+        };
+
+        Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+        return Ok(park);
+    }
+
+    [HttpGet]
+    [Route("getpaging-by-param")]
+    public async Task<ActionResult<IEnumerable<Park>>> GetParksByFilter(PagedParameters parkParameters)
+    {
+        if (_db.Parks == null)
+        {
+            return NotFound();
+        }
+        return await _db.Parks.OrderBy(on => on.ParkId)
+      .Skip((parkParameters.PageNumber - 1) * parkParameters.PageSize)
+      .Take(parkParameters.PageSize).ToListAsync();
     }
     
     [HttpPost]
