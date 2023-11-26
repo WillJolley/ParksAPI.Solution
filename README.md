@@ -112,23 +112,23 @@ Example
 Sample Response Body
   ```
   {
-        "parkId": 1,
-        "name": "Olympic National Park",
-        "state": "Washington",
-        "features": "Lake Crescent, Hoh River"
-    },
-    {
-        "parkId": 2,
-        "name": "Beacon Rock State Park",
-        "state": "Washington",
-        "features": "Beacon Rock, Hardy Ridge Trail"
-    },
-    {
-        "parkId": 3,
-        "name": "Zion National Park",
-        "state": "Utah",
-        "features": "Angels Landing, Weeping Rock"
-    }
+      "parkId": 1,
+      "name": "Olympic National Park",
+      "state": "Washington",
+      "features": "Lake Crescent, Hoh River"
+  },
+  {
+      "parkId": 2,
+      "name": "Beacon Rock State Park",
+      "state": "Washington",
+      "features": "Beacon Rock, Hardy Ridge Trail"
+  },
+  {
+      "parkId": 3,
+      "name": "Zion National Park",
+      "state": "Utah",
+      "features": "Angels Landing, Weeping Rock"
+  }
   ```
 
 ## Known Bugs
