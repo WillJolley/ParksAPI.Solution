@@ -27,7 +27,7 @@ ParksAPI is an ASP.NET Core web API that allows users to populate a database wit
 3. Create a file named `appsettings.json`: `$ touch appsettings.json`
 4. Within `appsettings.json` add the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL.
 
-    ```json
+    ```
   {
     "Logging": {
       "LogLevel": {
