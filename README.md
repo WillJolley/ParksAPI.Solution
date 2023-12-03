@@ -63,7 +63,7 @@ HTTP Request Structure
   DELETE /api/Parks/{id}
   ```
 
-Example Query
+Example GET Request
   ```
   https://localhost:7030/api/Parks/2
   ```
@@ -78,7 +78,7 @@ Sample Response Body
   }
   ```
 
-Search By State Example Query
+Search By State Example Request
   ```
   https://localhost:7030/api/Parks?state=washington
   ```
@@ -98,6 +98,45 @@ Sample Response Body
     "features": "Beacon Rock, Hardy Ridge Trail"
   }
   ```
+
+  Example POST Request
+  ```
+  https://localhost:7030/api/Parks
+
+  {
+    "name": "Yellowstone National Park",
+    "state": "Colorado",
+    "features": "Geysers" 
+  }
+  ```
+  * Requests must be made in JSON 
+  * "name" and "state" parameters are required; "features" is an optional parameter
+  * parkId is auto-implemented
+
+  Example PUT Request
+  ```
+  https://localhost:7030/api/Parks/{id}
+
+  {
+    "parkId": 11,
+    "name": "Fort Stevens State Park",
+    "state": "Oregon"
+  }
+  ```
+  * parkId must be declared in the request body for PUT requests
+
+  Example DELETE Request
+  ```
+  https://localhost:7030/api/Parks/{id}
+
+  {
+    "parkId": 72,
+    "name": "Acadia National Park",
+    "state": "Maine"
+  }
+  ```
+  * parkId must be declared in the request body for DELETE requests too
+
 
 ## Pagination
 
