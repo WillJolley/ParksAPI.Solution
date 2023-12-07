@@ -37,7 +37,7 @@ ParksAPI is an ASP.NET Core web API that allows users to populate a database wit
       },
       "AllowedHosts": "*",
       "ConnectionStrings": {
-        "DefaultConnection": "Server=localhost;Port=3306;database=parks_api;uid=root;pwd=epicodus;"
+        "DefaultConnection": "Server=localhost;Port=3306;database=parks_api;uid=[Your UserID];pwd=[Your Password];"
       }
     }
     ```
